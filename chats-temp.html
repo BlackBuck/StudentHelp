@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Chats</title>
+  <link rel="stylesheet" href="./chats.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1>Chats</h1>
+<div class="window">
+  <aside class="conv-list-view">
+    <header class="conv-list-view__header">
+      <div class="cf">
+        <ul class="close-button-list">
+          <li></li><li></li><li></li>
+        </ul>
+        <ul class="function-list">
+          <li class="icon-lupe"></li>
+        </ul>
+      </div>
+    </header>
+    <ul class="conv-list">
+      <li class="selected">
+        <div class="status">
+          <i class="status__indicator--unread-message"></i>    
+          <figure class="status__avatar">
+            <img src="shiksha.jpeg">
+          </figure>
+          <div class="meta">
+            <div class="meta__name">Shiksha</div>
+            <div class="meta__sub--dark">Grades of your last test looks good</div>
+          </div>
+        </div>
+      </li>      
+      <li>
+        <div class="status">
+          <i class="status__indicator--replied-message"></i>    
+          <figure class="status__avatar">
+            <img src="komal.jpeg"/>
+          </figure>
+          <div class="meta">
+            <div class="meta__name">Komal yadav</div>
+            <div class="meta__sub--dark">How's your study going?</div>
+          </div>
+        </div>
+      </li>     
+      <li>
+        <div class="status">
+          <i class="status__indicator--read-message"></i>    
+          <figure class="status__avatar">
+            <img src="anil.jpg">
+          </figure>
+          <div class="meta">
+            <div class="meta__name">Anil Kumar</div>
+            <div class="meta__sub--dark">Test Uploaded.<br>Perform your Test</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </aside>
+  <section class="chat-view">
+    <header class="chat-view__header">
+      <div class="cf">
+        <div class="status">
+          <i class="status__indicator--online"></i>  
+          <div class="meta">
+            <div class="meta__name">Sanidhya</div>
+            <div class="meta__sub--light">JEE aspirant</div>
+          </div>
+        </div>
+        <ul class="function-list">
+          <li class="icon-cloud"></li>
+          <li class="icon-clock"></li>
+          <li class="icon-dots"></li>
+        </ul>
+      </div>
+    </header>
+    <section class="message-view">
+      <div class="message--send">
+        <div class="message__bubble--send">
+          Hello mam
+        </div>
+        <figure class="message__avatar">
+          <img src="sanidhya.jpeg" />
+        </figure>
+      </div>
+      <div class="cf"></div>
+      
+      <div class="message">
+        <figure class="message__avatar">
+          <img src="shiksha.jpeg" />
+        </figure>
+        <div class="message__bubble">
+          Hello Sanidhya
+        </div>
+      </div>      <div class="cf"></div>
+      
+      <div class="message--send">
+        <div class="message__bubble--send">
+        Grades of your last test looks good.
+        </div>
+        <figure class="message__avatar">
+          <img src="sanidhya.jpeg" />
+        </figure>
+      </div>
+    </section>
+    <footer class="chat-view__input">
+      <div class="input"><input /><span class="input__emoticon"></span></div>
+      <div class="status">
+        <figure class="status__avatar--small">
+          <img src="sanidhya.jpeg" />
+        </figure>
+      </div>
+    </footer>
+  </section>
+</div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teacher Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #1B262C;
+      color: #BBE1FA;
+      font-family: Arial, sans-serif;
+    }
+   
+    .header {
+      background-color: #3282B8;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+   
+    .header h3 {
+      margin: 0;
+      color: #BBE1FA;
+    }
+   
+    .header .nav-links {
+      display: flex;
+      align-items: center;
+    }
+   
+    .header .nav-links a {
+      color: #BBE1FA;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+   
+    .sidebar {
+      background-color: #3282B8;
+      padding: 20px;
+      border-radius: 8px;
+      height: 100vh;
+    }
+   
+    .sidebar-btn {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: left;
+      background-color: #0F4C75;
+      color: #BBE1FA;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+   
+    .content {
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #0F4C75;
+      height: 100vh;
+    }
+   
+    .hidden {
+      display: none;
+    }
+   
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #BBE1FA;
+    }
+
+    th {
+      background-color: #3282B8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12 header">
+        <h3 style="color: #BBE1FA;">Student</h3>
+        <div class="nav-links">
+          <a href="#" style="color: #BBE1FA;">Home</a>
+          <a href="#" style="color: #BBE1FA;">Add</a>
+          <a href="#" style="color: #BBE1FA;">Branch</a>
+          <a href="#" style="color: #BBE1FA;">Log Out</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 sidebar">
+        <button class="sidebar-btn" id="timetable-btn">Time Table</button>
+        <button class="sidebar-btn" id="classes-btn">Classes</button>
+      </div>
+      <div class="col-md-9 content">
+        <div id="timetable-content" class="hidden">
+          <h2>Time Table</h2>
+          <table class="table table-bordered table-dark">
+            <thead>
+<tr>
+<th>Day/Period</th>
+<th align="center" height="50" width="100">I<br>8:30-9:30</th>
+<th align="center" height="50" width="100">II<br>9:30-10:20</th>
+<th align="center" height="50" width="100">III<br>10:40-11:35</th>
+<th align="center" height="50" width="100">IV<br>11:35-12:30</th>
+<th align="center" height="50" width="100">V<br>12:30-1:25</th>
+<th align="center" height="50" width="100">VI<br>1:45-2:40</th>
+<th align="center" height="50" width="100">VII<br>2:40-3:35</th>
+<th align="center" height="50" width="100">VIII<br>3:35-4:30</th>
+<th align="center" height="50" width="100">IX<br>4:30-5:25</th>
+<th align="center" height="50" width="100">X<br>5:25-6:30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center" height="50">
+<b>Monday</b></td>
+<td align="center" height="50" colspan="2">11th<br>[JEE,PHY.]</td>
+<td align="center" height="50">12th<br>[JEE,PHY.]</td>
+<td align="center" height="50">11th<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="3">12th<br>[NEET,PHY.]</td>
+<td align="center" height="50">DR<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="2">DR<br>[JEE,PHY.]</td>
+</tr>
+<tr>
+<td align="center" height="50">
+<b>Tuesday</b></td>
+<td align="center" height="50" colspan="2">11th<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="3">12th<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="3">11th<br>[JEE,PHY.]</td>
+<td align="center" height="50" colspan="2">12th<br>[JEE,PHY.]</td>
+</tr>
+<tr>
+<td align="center" height="50">
+<b>Wednesday</b></td>
+<td align="center" height="50"></td>
+<td align="center" height="50">11th<br>[NEET,PHY.]</td>
+<td align="center" height="50">DR<br>[JEE,PHY.]</td>
+<td align="center" height="50">12th<br>[NEET,PHY.]</td>
+<td align="center" height="50"></td>
+<td align="center" height="50"></td>
+<td align="center" height="50">11th<br>[JEE,PHY.]</td>
+<td align="center" height="50">12th<br>[JEE,PHY.]</td>
+<td align="center" height="50" colspan="2">DR<br>[NEET,PHY.]</td>
+</tr>
+<tr>
+<td align="center" height="50">
+<b>Thursday</b></td>
+<td align="center" height="50" colspan="2"></td>
+<td align="center" height="50">11th<br>[JEE,PHY.]</td>
+<td align="center" height="50">12th<br>[JEE,PHY.]</td>
+<td align="center" height="50">11th<br>[NEET,PHY.]</td>
+<td align="center" height="50"></td>
+<td align="center" height="50">12th<br>[NEET,PHY.]</td>
+<td align="center" height="50">DR<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="2">DR<br>[JEE,PHY.]</td>
+</tr>
+<tr>
+<td align="center" height="50">
+<b>Friday</b></td>
+<td align="center" height="50">11th<br>[NEET,PHY.]</td>
+<td align="center" height="50">12th<br>[NEET,PHY.]</td>
+<td align="center" height="50">11th<br>[JEE,PHY.]</td>
+<td align="center" height="50">12th<br>[JEE,PHY.]</td>
+<td align="center" height="50"></td>
+<td align="center" height="50"></td>
+<td align="center" height="50">DR<br>[NEET,PHY.]</td>
+<td align="center" height="50" colspan="3">DR<br>[JEE,PHY.]</td>
+</tr>
+<tr>
+<td align="center" height="50">
+<b>Saturday</b></td>
+<td align="center" height="50">DR<br>[NEET,PHY.]</td>
+<td align="center" height="50">DR<br>[JEE,PHY.]</td>
+<td align="center" height="50"></td>
+<td align="center" height="50"></td>
+<td align="center" height="50"></td>
+<td align="center" height="50" colspan="5"></td>
+</tr>
+</tbody>
+<tfooter>Mr. Anil Kumar</tfooter>
+            <!-- Add more rows for other days and subjects -->
+          </table>
+        </div>
+        <div id="classes-content" class="hidden">
+          <h2>Classes</h2>
+          <ul class="list-group">
+            <li class="list-group-item">11th [JEE , PHYSICS]</li>
+            <li class="list-group-item">12TH [JEE , PHYSICS]</li>
+            <li class="list-group-item">11th [JEE , CHEMISTRY]</li>
+            <li class="list-group-item">12th [JEE , CHEMISTRY]</li>
+            <!-- Add more list items for other classes -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#timetable-btn").click(function() {
+        $("#timetable-content").removeClass("hidden");
+        $("#classes-content").addClass("hidden");
+      });
+
+      $("#classes-btn").click(function() {
+        $("#timetable-content").addClass("hidden");
+        $("#classes-content").removeClass("hidden");
+      });
+    });
+  </script>
+</body>
+</html>

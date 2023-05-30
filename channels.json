@@ -1,0 +1,35 @@
+[
+    {
+        "stream" : "B.Tech",
+        "channels" : [
+            {
+                "name" : "Code With Harry",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Apna College",
+                "link" : "https://www.youtube.com"
+            }
+        ]
+    },
+
+    { 
+        "stream" : "NEET",
+        "channels" : [
+            {
+                "name" : "Code With Harry", 
+                "link" : "https://www.google.com"
+            }
+        ]
+    },
+
+    {
+        "stream" : "CUET",
+        "channels" : [
+            {
+                "name" : "Code With Harry",
+                "link" : "https://www.google.com"
+            }
+        ]
+    }
+]

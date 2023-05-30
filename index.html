@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        body {
+            background: #1B262C;
+        }
+        .header {
+            background-color: #3282B8;
+            font-size: 2rem;
+            color: #BBE1FA;
+            font-weight: bold;
+            padding: 0.5vw;
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none; 
+        }
+        .title {
+            margin-left: 2vw;
+        }
+        .page {
+            float: right;
+            margin-right: 0.5vw;
+            margin-left: 0.5vw;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: #bbded638;
+            backdrop-filter: blur(6px);
+            width: 23vw;
+            height: 65vh;
+            margin-top: 5vw;
+            border-radius: 10px;
+            border: 2px solid #bbded6d0;
+            margin: 0.5vw;
+            margin-top: 15vh;
+            font-size: 1.25em;
+            text-overflow: clip;
+            overflow: clip;
+        }
+        
+        /* .card:hover {
+            width: 30vw;
+            height: 75vh;
+        } */
+        
+        .image {
+            width: 100%;
+            height: 50%;
+            border-width: 0px 0px 2px 0px;
+            border-color: #bbded6d0;
+            border-style: solid;
+            box-sizing: border-box;
+            margin-bottom: 1vh;
+        }
+        
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px 10px 0px 0px;
+        }
+
+        .detail {
+            color: #61C0BF;
+            
+        }
+
+        #details {
+            position: fixed;
+            top: 0vh;
+            background: #61c0be49;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2vh;
+            color: white;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <span class="title"><a href="#" target="_self">Student</a></span>
+        <span class="page"><a href="teacher-login.html" target="_black">Teacher</a></span>
+        <span class="page"><a href="login.html" target="_blank">Login</a></span>
+        <span class="page"><a href="#">Home</a></span>
+    </div>
+    <div class="container" style="z-index: 2;display: none;" id="details">
+        
+    </div>
+    <div class="container" id="cards">
+        <div class="card">
+            <div class="image">
+                <img src="profile.jpg" alt="">
+            </div>
+            <div class="detail">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum debitis praesentium adipisci ratione. Repudiandae consequuntur dolorum excepturi ducimus cupiditate sequi architecto et iusto.
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="sanidhya.jpeg" alt="">
+            </div>
+            <div class="detail">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum debitis praesentium adipisci ratione. Repudiandae consequuntur dolorum excepturi ducimus cupiditate sequi architecto et iusto.
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="sanidhya.jpeg" alt="">
+            </div>
+            <div class="detail">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum debitis praesentium adipisci ratione. Repudiandae consequuntur dolorum excepturi ducimus cupiditate sequi architecto et iusto.
+            </div>
+        </div>
+        <div class="card">
+            <div class="image">
+                <img src="komal.jpeg" alt="" class="img">
+            </div>
+            <div class="detail">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum debitis praesentium adipisci ratione. Repudiandae consequuntur dolorum excepturi ducimus cupiditate sequi architecto et iusto.
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("cards").childNodes.forEach(element => {
+            
+            element.addEventListener("click", (event)=> {
+                console.log(element.innerHTML)
+                let details = document.getElementById("details");
+                details.style.display = "flex";
+                let element2 = element.cloneNode(true);
+                element2.style.width = "35vw";
+                element2.style.height = "40vw";
+                element2.getElementsByClassName("detail")[0].style.color = "white";
+                element2.getElementsByClassName("detail")[0].innerHTML = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi laboriosam blanditiis voluptas ex quod vero tenetur placeat ab, recusandae natus est rerum numquam officia provident et, pariatur fugit modi! Quos obcaecati, molestias unde eum aspernatur ratione facere laborum quam. Perspiciatis reprehenderit dolor voluptate error ad aut asperiores unde? Culpa, deserunt?";
+                element2.style.margin = "5vh";
+                details.append(element2);
+            })
+        });
+        document.getElementById("details").addEventListener("click", (event)=> {
+            event.target.childNodes[1].remove();
+            event.target.style.display = "none";
+        })
+    </script>
+</body>
+</html>

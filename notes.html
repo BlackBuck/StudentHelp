@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: hidden;
+        }
+        body {
+            background: #1B262C;
+        }
+        .header {
+            background-color: #3282B8;
+            font-size: 2rem;
+            color: #BBE1FA;
+            font-weight: bold;
+            padding: 0.5vw;
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none; 
+        }
+        .title {
+            margin-left: 2vw;
+        }
+        .page {
+            float: right;
+            margin-right: 0.5vw;
+            margin-left: 0.5vw;
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100vw;
+            float: right;
+        }
+        .card {
+            background: #bbded638;
+            backdrop-filter: blur(6px);
+            width: 25vw;
+            height: auto;
+            margin-top: 5vw;
+            border-radius: 10px;
+            border: 2px solid #bbded6d0;
+            margin: 0.5vw;
+            margin-top: 15vh;
+            font-size: 1.25em;
+            text-overflow: clip;
+            overflow: clip;
+        }
+
+        .option {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            height: 89vh;
+            width: 20vw;
+            margin: 0.5rem;
+            border-radius: 2rem;
+            background: #bbe1fa;
+            display: inline-block;
+        }
+
+        .body {
+            background: #bbe1fa74;
+            width: 80vw;
+            border-radius: 2rem;
+            margin: 0.5rem;
+            background: blur(5px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .choice {
+            float: left;
+            background: rgba(128, 128, 128, 0.478);
+            border-radius: 1rem;
+            padding: 0.3rem;
+            margin: 0.5rem;
+            width: 95%;
+            height: 3rem;
+            box-sizing: border-box;
+            color: #BBE1FA;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 2rem;
+            text-align: center;;
+        }
+
+        .small-button {
+            float: right;
+            background: rgba(255, 255, 255, 0.243);
+            border: none;
+            width: 2.5em;
+            height: 2.5em;
+            margin-right: 0.5em;
+            border-radius: 0.5rem;
+            color: white;
+        }
+
+        .large-button {
+            background:rgba(255, 255, 255, 0.243);
+            border: 2px solid #bbded6d0;
+            width: 95%;
+            height: 3em;
+            border-radius: 0.5rem;
+            color: #bbe1fa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .table, th, td {
+            position: relative;
+            border : 3px solid #bbded6d0;
+            border-collapse : collapse;
+            border-radius: 5px;
+            border-style : inset;
+            text-align: center;
+            padding: 10px;
+            color: #1B262C;
+        }
+        th, td {
+            background-color: #bbded638;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <span class="title"><a href="#" target="_self">Student</a></span>
+        <span class="page" onclick="logout()" style="cursor:pointer;">Logout</span>
+        <!-- <span class="page" onclick="dropdown()" style="cursor:pointer">Add Branch</span> -->
+        <span class="page"><a href="#">Home</a></span>
+    </div>
+    <div class="container" style="z-index: 2;display: none;position: fixed;" id="addBranch">
+        <div class="card">
+            <div class="details">
+                <div class="option" id="options">
+                    <!-- <span class="choice" id="JEE">JEE
+                        <button type="submit" onclick="addBranch('JEE')" class="small-button">+</button>
+                    </span>
+                    <span class="choice">JEE
+                        <button type="submit" onclick="something()" class="small-button">+</button>
+                    </span> -->
+                </div>
+            </div>
+            <button class="large-button" style="cursor: pointer;" onclick="closeContainer()" id="closeContainer">CLOSE</button>
+        </div>
+        
+    </div>
+
+
+    <div class="main">
+        <div class="sidebar" >
+            <div class="option" id="chosenBranches">
+                <span class="choice" style="margin-top: 2rem;color: #3282B8;">
+                    <a href="overview.html" style="color: #3282B8">Overview</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8;">
+                    <a href="videos.html" style="color: #3282B8">Videos</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="notes.html" style="color: #3282B8">Notes</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="chats.html" style="color: #3282B8">Chats</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="time-table.html" style="color: #3282B8">Time-table</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="books.html" style="color: #3282B8">Books</a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="body" id="main">            
+            
+        </div>
+    </div>
+
+    <script>
+        window.onload = (event)=> {
+            let stream = localStorage.programme;
+            // console.log(stream)
+            let m = document.getElementById("main");
+            // console.log("Adding child nodes for ", stream);
+            while(m.hasChildNodes()) m.removeChild(m.firstChild) 
+            fetch("/notes", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    stream,
+                }),
+                }).then((response)=> response.json())
+                    .then((data)=> {
+                        // console.log(data);
+                        let channels = data.channels;
+                        for(var i=0;i<channels.length;i++) {
+                            let elem = document.createElement("div");
+                            elem.style.width = "16vw";
+                            elem.style.height = "15rem";
+                            elem.style.marginTop = "2vw";
+                            elem.style.color = "Black";
+                            elem.className = "card";
+                            elem.textAlign = "left";
+
+                            let k = document.createElement("div");
+                            k.style.background = "#bbded6d0";
+                            k.style.width = "100%";
+                            k.style.height = "50%";
+
+                            let a = document.createElement('a');
+                            a.href = channels[i].link;
+                            a.innerHTML = channels[i].name;
+                            a.style.marginTop = "2rem";
+                            a.style.color = "Black";
+                            
+                            elem.appendChild(k);
+                            elem.appendChild(a);
+                            document.getElementById("main").appendChild(elem);
+                        }
+                    })
+        };
+
+        let logout = ()=> {
+            window.localStorage.clear();
+            let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+            window.open(loc + "/login.html", "_self");
+        }
+    </script>
+
+</body>
+</html>

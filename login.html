@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(90deg, #3282B8, #BBE1FA);
+        }
+
+        .form {
+            position:absolute;
+            height: auto;
+            width: 12em;
+            top: 20%;
+            left: 36%;
+            display: inline-block;
+            border: 2px solid rgba(100%, 100%, 100%, 0.4);
+            font-size: 30px;
+            border-radius: 5px;
+            text-align: left;
+            padding: 10px;
+            background-color: rgba(100%, 100%, 100%, 0.3);
+            
+        }
+
+        input {
+            background:rgba(100%, 100%, 100%, 0.3);
+            font-size: 20px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            width: 98%;
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        .profile {
+            position: relative;
+            left: 19%;
+            border-radius: 100em;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3282B8;
+            font-size: 20px;
+            border-radius: 10px;
+            border: 2px solid gray;
+            width:100%;
+            height: 40px;
+            margin: 10px auto;
+        }
+        button:hover {
+            background-color: #BBE1FA;
+            border: 2px solid #bbe1fa8a
+        }
+    </style>
+    <!-- <script src="./login.js"></script> -->
+</head>
+<body>
+    <script>
+        function login() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            fetch('/login', {
+                method: "POST",
+                headers: {
+                    Authorization: 'Bearer abcdxyz',
+                    "Content-Type" : 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                    admin : 0
+                }),
+            }).then((response)=> response.json()).then((data)=>{
+                if(data.success) {
+                    console.log(data.userData)
+                    window.localStorage.setItem("username", username);
+                    window.localStorage.setItem("password", password);
+                    window.localStorage.setItem("branches", JSON.stringify(data.userData.streams));
+                    window.localStorage.setItem("programme", JSON.stringify(data.userData.programme));
+                    // window.localStorage.setItem("preferences", data[i].preferences);
+                    // window.localStorage.setItem("stream", data[i].stream);
+                    let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+                    window.open(loc+'/overview.html', '_self');
+                }
+            });
+        }
+        function register() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            fetch('/register', {
+                method: "POST",
+                headers: {
+                    Authorization: 'Bearer abcdxyz',
+                    "Content-Type" : 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                }),
+            }).then((response)=> response.json()).then((data)=>{
+                if(data.success) {
+                    alert("Username already exists.");
+                }
+            });
+        }
+    </script>
+    <div class="form">
+        <div class="profile">
+            <img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/logo.png" alt="" class="profile">
+        </div>
+        <div class="input">
+            Username:&nbsp;
+            <input type="text" id="username" placeholder="Username" required>
+        </div><br>
+
+        <div class="input">
+            Password:&nbsp;
+            <input type="password" id="password" placeholder="Password" required>
+        </div>
+
+        <div class="input">
+            <button type="submit" onclick=""><a href="/register.html" style="text-decoration: none;color: black;cursor: default;">New User  </a></button>
+        </div>
+
+        <div class="input">
+            <button type="submit" onclick="login()">Login</button>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

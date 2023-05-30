@@ -1,0 +1,31 @@
+[
+    {
+        "stream" : "B.Tech",
+        "channels" : [
+            {
+                "name" : "Computer Engineering",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Information Technology",
+                "link" : "https://www.youtube.com"
+            },
+            {
+                "name" : "Electronics and Communication",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Electrical Engineering",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Mechanical Engineering",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Civil Engineering",
+                "link" : "https://www.google.com"
+            }
+        ]
+    }
+]

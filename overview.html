@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: hidden;
+        }
+        body {
+            background: #1B262C;
+        }
+        .header {
+            background-color: #3282B8;
+            font-size: 2rem;
+            color: #BBE1FA;
+            font-weight: bold;
+            padding: 0.5vw;
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none; 
+        }
+        .title {
+            margin-left: 2vw;
+        }
+        .page {
+            float: right;
+            margin-right: 0.5vw;
+            margin-left: 0.5vw;
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100vw;
+            float: right;
+        }
+        .card {
+            background: #bbded638;
+            backdrop-filter: blur(6px);
+            width: 23vw;
+            height: auto;
+            margin-top: 5vw;
+            border-radius: 10px;
+            border: 2px solid #bbded6d0;
+            margin: 0.5vw;
+            margin-top: 15vh;
+            font-size: 1.25em;
+            text-overflow: clip;
+            overflow: clip;
+        }
+
+        .option {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            height: 89vh;
+            width: 20vw;
+            margin: 0.5rem;
+            border-radius: 2rem;
+            background: #bbe1fa;
+            display: inline-block;
+        }
+
+        .body {
+            background: #bbe1fa74;
+            width: 80vw;
+            border-radius: 2rem;
+            margin: 0.5rem;
+            background: blur(5px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .choice {
+            float: left;
+            background: rgba(128, 128, 128, 0.478);
+            border-radius: 1rem;
+            padding: 0.3rem;
+            margin: 0.5rem;
+            width: 95%;
+            height: 3rem;
+            box-sizing: border-box;
+            color: #BBE1FA;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 2rem;
+            text-align: center;;
+        }
+
+        .small-button {
+            float: right;
+            background: rgba(255, 255, 255, 0.243);
+            border: none;
+            width: 2.5em;
+            height: 2.5em;
+            margin-right: 0.5em;
+            border-radius: 0.5rem;
+            color: white;
+        }
+
+        .large-button {
+            background:rgba(255, 255, 255, 0.243);
+            border: 2px solid #bbded6d0;
+            width: 95%;
+            height: 3em;
+            border-radius: 0.5rem;
+            color: #bbe1fa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <span class="title"><a href="#" target="_self">Student</a></span>
+        <span class="page" onclick="logout()" style="cursor:pointer;">Logout</span>
+        <span class="page"><a href="#">Home</a></span>
+    </div>
+    <div class="container" style="z-index: 2;display: none;position: fixed;" id="addBranch">
+        <div class="card">
+            <div class="details">
+                <div class="option" id="options">
+                    <!-- <span class="choice" id="JEE">JEE
+                        <button type="submit" onclick="addBranch('JEE')" class="small-button">+</button>
+                    </span>
+                    <span class="choice">JEE
+                        <button type="submit" onclick="something()" class="small-button">+</button>
+                    </span> -->
+                </div>
+            </div>
+            <button class="large-button" style="cursor: pointer;" onclick="closeContainer()" id="closeContainer">CLOSE</button>
+        </div>
+        
+    </div>
+
+
+    <div class="main">
+        <div class="sidebar" >
+            <div class="option" id="chosenBranches">
+                <span class="choice" style="margin-top: 2rem;color: #3282B8;">
+                    <a href="overview.html" style="color: #3282B8">Overview</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8;">
+                    <a href="Videos.html" style="color: #3282B8">Videos</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="notes.html" style="color: #3282B8">Notes</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="chats.html" style="color: #3282B8">Chats</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="time-table.html" style="color: #3282B8">Time-table</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="books.html" style="color: #3282B8">Books</a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="body" id="main">
+            <div class="card" style="width: 50vw;height: 25rem;margin-top: 2vw;">
+                <div style="display: flex;flex-direction: row;">
+                    <img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/logo.png" alt="" style="border-radius: 100rem;width: 5rem;height: 5rem;margin: 1rem;">
+                    <div style="text-align: center;margin: 1rem;">
+                        NATIONAL INSTITUTE OF TECHNOLOGY<br>
+                        KURUKSHETRA<br>
+                        HARYANA-136119(INDIA)<br>
+                        (INSTITUTION OF NATIONAL IMPORTANCE)<br>
+                    </div>
+                </div><hr>
+                <div style="display: flex; flex-direction: row;">
+                    <img src="profile.jpg" alt="" style="width: 12vw;height: 10em;margin: 1rem;border-radius: 1rem;">
+                    <div style="text-align: justify;margin: 1rem;" id="idCard">
+                        <!-- ROLL NO. :       12212141<br><br>
+                        STUDENT'S NAME : ANIL KUMAR<br><br>
+                        FATHER'S NAME : OM PRAKASH<br><br>
+                        PROGRAMME : B.TECH<br>
+                        DEPT./SCHOOL : <small>COMP. ENGG.</small><br>
+                        BRANCH : <small>COMP. ENGG.</small> -->
+                    </div>
+                </div>
+            </div>
+                     
+            
+        </div>
+    </div>
+    <script>
+        window.onload = (event)=> {
+            let card = document.getElementById("idCard");
+            let username = localStorage.username;
+            fetch('/data', {
+                method: "POST", 
+                headers: {
+                    "Content-Type" : 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                })
+            }).then((response)=> response.json())
+                    .then((data)=> {
+                        console.log(data);
+                        let name = data.name;
+                        let fname = data.fname;
+                        let programme = data.programme
+                        console.log(fname)
+                        card.innerHTML += "ROLL NO. :" + username + "<br><br>";
+                        card.innerHTML += "STUDENT'S NAME : " + name +"<br><br>";
+                        card.innerHTML += "FATHER'S NAME : " + fname + "<br><br>";
+                        card.innerHTML += "PROGRAMME : " + programme;
+                        
+                    })
+        };
+
+        let logout = ()=> {
+            window.localStorage.clear();
+            let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+            window.open(loc + "/login.html", "_self");
+        }
+    </script>
+</body>
+</html>

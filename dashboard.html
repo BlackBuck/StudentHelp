@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: hidden;
+        }
+        body {
+            background: #1B262C;
+        }
+        .header {
+            background-color: #3282B8;
+            font-size: 2rem;
+            color: #BBE1FA;
+            font-weight: bold;
+            padding: 0.5vw;
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none; 
+        }
+        .title {
+            margin-left: 2vw;
+        }
+        .page {
+            float: right;
+            margin-right: 0.5vw;
+            margin-left: 0.5vw;
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100vw;
+            float: right;
+        }
+        .card {
+            background: #bbded638;
+            backdrop-filter: blur(6px);
+            width: 23vw;
+            height: auto;
+            margin-top: 5vw;
+            border-radius: 10px;
+            border: 2px solid #bbded6d0;
+            margin: 0.5vw;
+            margin-top: 15vh;
+            font-size: 1.25em;
+            text-overflow: clip;
+            overflow: clip;
+        }
+
+        .option {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            height: 89vh;
+            width: 20vw;
+            margin: 0.5rem;
+            border-radius: 2rem;
+            background: #bbe1fa;
+            display: inline-block;
+        }
+
+        .body {
+            background: #bbe1fa74;
+            width: 80vw;
+            border-radius: 2rem;
+            margin: 0.5rem;
+            background: blur(5px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .choice {
+            float: left;
+            background: rgba(128, 128, 128, 0.478);
+            border-radius: 1rem;
+            padding: 0.3rem;
+            margin: 0.5rem;
+            width: 95%;
+            height: 3rem;
+            box-sizing: border-box;
+            color: #BBE1FA;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 2rem;
+            text-align: center;;
+        }
+
+        .small-button {
+            float: right;
+            background: rgba(255, 255, 255, 0.243);
+            border: none;
+            width: 2.5em;
+            height: 2.5em;
+            margin-right: 0.5em;
+            border-radius: 0.5rem;
+            color: white;
+        }
+
+        .large-button {
+            background:rgba(255, 255, 255, 0.243);
+            border: 2px solid #bbded6d0;
+            width: 95%;
+            height: 3em;
+            border-radius: 0.5rem;
+            color: #bbe1fa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-sizing: border-box;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <span class="title"><a href="#" target="_self">Student</a></span>
+        <span class="page" onclick="logout()" style="cursor:pointer;">Logout</span>
+        <span class="page" onclick="dropdown()" style="cursor:pointer">Add Branch</span>
+        <span class="page"><a href="#">Home</a></span>
+    </div>
+    <div class="container" style="z-index: 2;display: none;position: fixed;" id="addBranch">
+        <div class="card">
+            <div class="details">
+                <div class="option" id="options">
+                    <!-- <span class="choice" id="JEE">JEE
+                        <button type="submit" onclick="addBranch('JEE')" class="small-button">+</button>
+                    </span>
+                    <span class="choice">JEE
+                        <button type="submit" onclick="something()" class="small-button">+</button>
+                    </span> -->
+                </div>
+            </div>
+            <button class="large-button" style="cursor: pointer;" onclick="closeContainer()" id="closeContainer">CLOSE</button>
+        </div>
+        
+    </div>
+
+
+    <div class="main">
+        <div class="sidebar" >
+            <div class="option" id="chosenBranches">
+                <span class="choice" style="margin-top: 2rem;color: #3282B8;">
+                    JEE
+                </span>
+            </div>
+        </div>
+        
+        <div class="body" id="main">
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>
+            <div class="card" style="width: 15vw;height: 15rem;margin-top: 2vw;">
+                
+            </div>            
+            
+        </div>
+    </div>
+    <script>
+
+        window.onload = (event)=> {
+            let username = localStorage.username;
+            updateData();
+
+
+            // add the channels for the first stream in the list
+            let streams = JSON.parse(localStorage.branches);
+            // if the user has chosen some stream else
+            // give popup to select stream
+            if(streams[0]) {
+                // add channels for the first stream
+                // else the event listeners would work
+                addChannels(streams[0]);
+            }
+            else {
+                dropdown();
+            }
+
+        }
+
+        function closeContainer() {
+            let container = document.getElementById("addBranch");
+            let branch = JSON.parse(localStorage.branches);
+            if(branch[0]) {
+                container.style.display = "none";
+                addChannels(branch[0]);
+            }
+            updateData();            
+        }
+
+        let dropdown = ()=> {
+            let container = document.getElementById("addBranch");
+            container.style.display = "flex";
+            let username = localStorage.username;
+            let branches = ["JEE", "NEET", "CUET", "B.Tech"];
+
+            // change later to use localStorage
+            fetch('/data', {
+                method: "POST", 
+                headers: {
+                    "Content-Type" : 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                })
+            }).then((response)=> response.json())
+                    .then((data)=> {
+                        let streams = data.streams;
+                        // remove the already existing branches
+                        for(var i=0;i<streams.length;i++) {
+                            branches.splice(branches.indexOf(streams[i]), 1);
+                        }
+                        
+                        let options = document.getElementById("options");
+                        // clear existing elements first
+                        while(options.hasChildNodes()) options.removeChild(options.firstChild)
+                        
+                        // for all streams make append choices
+                        for(var i=0;i<branches.length;i++) {
+                            let ch = document.createElement('span');
+                            ch.className = "choice";
+                            ch.id = branches[i];
+                            let btn = document.createElement("button");
+                            btn.type = "submit";
+                            btn.className = "small-button";
+                            btn.innerHTML = "+";
+                            btn.addEventListener("click", addBranch);
+                            ch.innerHTML = branches[i];
+                            ch.appendChild(btn);
+                            options.appendChild(ch);
+                        }
+                        
+                    })
+        }
+
+        let logout = ()=> {
+            window.localStorage.clear();
+            let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+            window.open(loc + "/login.html", "_self");
+        }
+
+        let addBranch = (event) => {
+            
+            let branch = event.target.parentNode.id;
+            let branches = JSON.parse(localStorage.branches);
+            branches.push(branch);
+            // console.log(branches);
+            localStorage.removeItem(branches);
+            
+            let username = localStorage.username;
+            fetch('/updateStream', {
+                method : "POST", 
+                headers: {
+                    "Content-Type" : 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                    branches
+                }),
+            }).then((response)=> response.json())
+                    .then((data)=> {
+                        // console.log(data);
+                        // if(data.stream[0] != undefined) {
+                        //     let closeBtn = document.getElementById("closeContainer");
+                        //     closeBtn.style.visibility = "visible";
+                        // }
+                        localStorage.setItem("branches", JSON.stringify(data.streams));
+                        // console.log(data.streams);
+                    })
+            
+            
+        }
+
+        function addChannels(stream) {
+            let m = document.getElementById("main");
+            // console.log("Adding child nodes for ", stream);
+            while(m.hasChildNodes()) m.removeChild(m.firstChild) 
+            fetch("/channels", {
+                method : "POST",
+                headers : {
+                    "Content-Type" : "application/json"
+                },
+                body : JSON.stringify({
+                    stream : stream,
+                }),
+                }).then((response)=> response.json())
+                    .then((data)=> {
+                        // console.log(data);
+                        let channels = data.channels;
+                        for(var i=0;i<channels.length;i++) {
+                            let elem = document.createElement("div");
+                            elem.style.width = "15vw";
+                            elem.style.height = "15rem";
+                            elem.style.marginTop = "2vw";
+                            elem.className = "card";
+                            elem.textAlign = "center";
+                            let a = document.createElement('a');
+                            a.href = channels[i].link;
+                            a.innerHTML = channels[i].name;
+                            a.style.marginTop = "2rem";
+                            
+                            elem.appendChild(a);
+                            document.getElementById("main").appendChild(elem);
+                        }
+                    })
+        }
+
+        function updateData() {
+            let username = localStorage.username;
+            fetch('/data', {
+                method: "POST", 
+                headers: {
+                    "Content-Type" : 'application/json',
+                },
+                body: JSON.stringify({
+                    username,
+                })
+            }).then((response)=> response.json())
+                    .then((data)=> {
+                        let streams = data.streams == undefined ? [] : data.streams;
+                        localStorage.setItem("branches", JSON.stringify(streams));
+                        let chosenBranches = document.getElementById("chosenBranches");
+                        
+                        // clear the existing ones first
+                        while(chosenBranches.hasChildNodes()) chosenBranches.removeChild(chosenBranches.firstChild);
+
+                        for(var i=0;i<streams.length;i++) {
+                            let ch = document.createElement("span");
+                            ch.className = "choice";
+                            ch.style.marginTop = "2rem";
+                            ch.style.color = "#3282B8";
+                            ch.style.cursor = "pointer";
+                            ch.innerHTML = streams[i];
+                            chosenBranches.appendChild(ch);
+                        }
+                        // add an event listener for all the chosen branches
+                        for(let child of chosenBranches.children) {
+                            // console.log(child.innerHTML.trim())
+                            child.addEventListener("click", (event)=> {
+                                event.preventDefault();
+                                addChannels(child.innerHTML.trim())
+                            })
+                        }
+                    });
+        }
+
+    </script>
+</body>
+</html>

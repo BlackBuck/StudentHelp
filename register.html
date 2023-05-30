@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(90deg, #3282B8, #BBE1FA);
+        }
+
+        .form {
+            position:absolute;
+            height: auto;
+            width: 12em;
+            top: 10%;
+            left: 36%;
+            display: inline-block;
+            border: 2px solid rgba(100%, 100%, 100%, 0.4);
+            font-size: 30px;
+            border-radius: 5px;
+            text-align: left;
+            padding: 10px;
+            background-color: rgba(100%, 100%, 100%, 0.3);
+            
+        }
+
+        input {
+            background:rgba(100%, 100%, 100%, 0.3);
+            font-size: 20px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            width: 98%;
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        .profile {
+            position: relative;
+            left: 19%;
+            border-radius: 100em;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #3282B8;
+            font-size: 20px;
+            border-radius: 10px;
+            border: 2px solid gray;
+            width:100%;
+            height: 40px;
+            margin: 10px auto;
+        }
+        button:hover {
+            background-color: #BBE1FA;
+            border: 2px solid #bbe1fa8a
+        }
+
+        select {
+            background:rgba(100%, 100%, 100%, 0.3);
+            font-size: 20px;
+            border: 1px solid gray;
+            border-radius: 10px;
+            width: 100%;
+            margin-right: 10px;
+            padding: 5px;
+        }
+    </style>
+    <!-- <script src="./login.js"></script> -->
+</head>
+<body>
+    <script>
+        function login() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            fetch('/login', {
+                method: "POST",
+                headers: {
+                    Authorization: 'Bearer abcdxyz',
+                    "Content-Type" : 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                }),
+            }).then((response)=> response.json()).then((data)=>{
+                if(data.success) {
+                    console.log(data.userData)
+                    window.localStorage.setItem("username", username);
+                    window.localStorage.setItem("password", password);
+                    window.localStorage.setItem("branches", JSON.stringify(data.userData.streams));
+                    // window.localStorage.setItem("preferences", data[i].preferences);
+                    // window.localStorage.setItem("stream", data[i].stream);
+                    let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+                    window.open(loc+'/dashboard.html', '_self');
+                }
+            });
+        }
+        function register() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let name = document.getElementById("name").value;
+            let programme = document.getElementById("branch").value;
+            let fName = document.getElementById("fname").value;
+            
+            console.log(fName);
+
+            if(validate()) {
+                fetch('/register', {
+                method: "POST",
+                headers: {
+                    Authorization: 'Bearer abcdxyz',
+                    "Content-Type" : 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password,
+                    name,
+                    fName,
+                    programme
+                }),
+                }).then((response)=> response.json()).then((data)=>{
+                    if(data.success) {
+                        alert("Username already exists.");
+                    }
+                    else {
+                        let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+                        window.open(loc+'/login.html', '_self');
+                    }
+                });
+            }
+            else {
+                location.reload();
+            }
+        }
+
+        function validate() {
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let name = document.getElementById("name").value;
+            let fName = document.getElementById("fname").value;
+
+            var alrt = "";
+            // try {
+            //     let x = parseInt(username);
+            // }
+            // catch(err) {
+            //     alrt += "Please enter a valid username(roll-no).";
+            // }.
+            if(!parseInt(username)) alrt += "Please enter a valid username(roll-no).";
+
+            if(password.length < 10) alrt += "Please enter a strong password.";
+
+            if(alrt.length > 0) {
+                alert(alrt);
+                return 0;
+            }
+            else {
+                return 1;
+            }
+        }
+    </script>
+    
+    <div class="form">
+        <div>
+            <div class="profile">
+            <img src="https://nitkkr.ac.in/wp-content/uploads/2022/05/logo.png" alt="" class="profile">
+            </div>
+            <div class="input" >
+                Full Name :
+                <input type="text" placeholder="John Doe" required id="name" />
+            </div>
+            <div class="input" >
+                Father's Name:
+                <input type="text" placeholder="Jacob Doe" required id="fname" />
+            </div>
+            <div class="input" >
+                Roll No.:
+                <input type="text" placeholder="xxx-xx-xxx" required id="username" />
+            </div>
+            <div class="input">
+                Password :
+                <input type="password" placeholder="Make me strong!!" required id="password"/>
+            </div>
+            <div class="input">
+                Branch:
+                <select name="branches" id="branch">
+                    <option value="B.Tech">B.Tech</option>
+                    <option value="M.Tech">M.Tech</option>
+                    <option value="PhD">PhD</option>
+                    <option value="MBA">MBA</option>
+                </select>
+            </div>
+            <div class="input">
+                <button type="submit" onclick="register()">Register</button>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>

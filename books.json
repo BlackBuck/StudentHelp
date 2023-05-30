@@ -1,0 +1,31 @@
+[
+    {
+        "stream" : "COE",
+        "channels" : [
+            {
+                "name" : "Algorithms",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "CLRS",
+                "link" : "https://www.youtube.com"
+            },
+            {
+                "name" : "Dennis Ritchie",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Python for Beginners",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "Java for Beginners",
+                "link" : "https://www.google.com"
+            },
+            {
+                "name" : "CPP",
+                "link" : "https://www.google.com"
+            }
+        ]
+    }
+]

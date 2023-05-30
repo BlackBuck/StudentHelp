@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            font-family: 'Courier New', Courier, monospace;
+            overflow-y: hidden;
+        }
+        body {
+            background: #1B262C;
+        }
+        .header {
+            background-color: #3282B8;
+            font-size: 2rem;
+            color: #BBE1FA;
+            font-weight: bold;
+            padding: 0.5vw;
+            border-radius: 5px;
+        }
+
+        a {
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none; 
+        }
+        .title {
+            margin-left: 2vw;
+        }
+        .page {
+            float: right;
+            margin-right: 0.5vw;
+            margin-left: 0.5vw;
+            font-size: 2rem;
+            color: #61C0BF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            width: 100vw;
+            float: right;
+        }
+        .card {
+            background: #bbded638;
+            backdrop-filter: blur(6px);
+            width: 23vw;
+            height: auto;
+            margin-top: 5vw;
+            border-radius: 10px;
+            border: 2px solid #bbded6d0;
+            margin: 0.5vw;
+            margin-top: 15vh;
+            font-size: 1.25em;
+            text-overflow: clip;
+            overflow: clip;
+        }
+
+        .option {
+            display: inline-block;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .sidebar {
+            height: 89vh;
+            width: 20vw;
+            margin: 0.5rem;
+            border-radius: 2rem;
+            background: #bbe1fa;
+            display: inline-block;
+        }
+
+        .body {
+            background: #bbe1fa74;
+            width: 80vw;
+            border-radius: 2rem;
+            margin: 0.5rem;
+            background: blur(5px);
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+        }
+
+        .choice {
+            float: left;
+            background: rgba(128, 128, 128, 0.478);
+            border-radius: 1rem;
+            padding: 0.3rem;
+            margin: 0.5rem;
+            width: 95%;
+            height: 3rem;
+            box-sizing: border-box;
+            color: #BBE1FA;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 2rem;
+            text-align: center;;
+        }
+
+        .small-button {
+            float: right;
+            background: rgba(255, 255, 255, 0.243);
+            border: none;
+            width: 2.5em;
+            height: 2.5em;
+            margin-right: 0.5em;
+            border-radius: 0.5rem;
+            color: white;
+        }
+
+        .large-button {
+            background:rgba(255, 255, 255, 0.243);
+            border: 2px solid #bbded6d0;
+            width: 95%;
+            height: 3em;
+            border-radius: 0.5rem;
+            color: #bbe1fa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .table, th, td {
+            position: relative;
+            border : 3px solid #bbded6d0;
+            border-collapse : collapse;
+            border-radius: 5px;
+            border-style : inset;
+            text-align: center;
+            padding: 10px;
+            color: #1B262C;
+        }
+        th, td {
+            background-color: #bbded638;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <span class="title"><a href="#" target="_self">Student</a></span>
+        <span class="page" onclick="logout()" style="cursor:pointer;">Logout</span>
+        <!-- <span class="page" onclick="dropdown()" style="cursor:pointer">Add Branch</span> -->
+        <span class="page"><a href="#">Home</a></span>
+    </div>
+    <div class="container" style="z-index: 2;display: none;position: fixed;" id="addBranch">
+        <div class="card">
+            <div class="details">
+                <div class="option" id="options">
+                    <!-- <span class="choice" id="JEE">JEE
+                        <button type="submit" onclick="addBranch('JEE')" class="small-button">+</button>
+                    </span>
+                    <span class="choice">JEE
+                        <button type="submit" onclick="something()" class="small-button">+</button>
+                    </span> -->
+                </div>
+            </div>
+            <button class="large-button" style="cursor: pointer;" onclick="closeContainer()" id="closeContainer">CLOSE</button>
+        </div>
+        
+    </div>
+
+
+    <div class="main">
+        <div class="sidebar" >
+            <div class="option" id="chosenBranches">
+                <span class="choice" style="margin-top: 2rem;color: #3282B8;">
+                    <a href="overview.html" style="color: #3282B8">Overview</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8;">
+                    <a href="videos.html" style="color: #3282B8">Videos</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="notes.html" style="color: #3282B8">Notes</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="" style="color: #3282B8">Chats</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="" style="color: #3282B8">Time-table</a>
+                </span>
+                <span class="choice" style="margin-top: 2rem; color: #3282B8">
+                    <a href="" style="color: #3282B8">Books</a>
+                </span>
+            </div>
+        </div>
+        
+        <div class="body" id="main">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Day/Period</th>
+                    <th>I<hr>8:30</th>
+                    <th>II<hr>9:25</th>
+                    <th>III<hr>10:40</th>
+                    <th>IV<hr>11:35</th>
+                    <th>V<hr>12:30</th>
+                    <th>VI<hr>1:45</th>
+                    <th>VII<hr>2:40</th>
+                    <th>VIII<hr>3:35</th>
+                    <th>IX<hr>4:30</th>
+                    <th>X<hr>5:25</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      Monday
+                    </td>
+                    <td colspan="2">PYTHON-P</td>
+                    <td>MA-T<br>E-306</td>
+                    <td>EE-L<br>E-301</td>
+                    <td colspan="3"></td>
+                    <td>DSD-T<br>E-307</td>
+                    <td colspan="2">GITA/THOUGHT-LAB<br></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Tuesday
+                    </td>
+                    <td colspan="2">CSPC;PS-P</td>
+                    <td colspan="3"><br></td>
+                    <td colspan="3">EG-P</td>
+                    <td colspan="2"><br></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Wednesday
+                    </td>
+                    <td></td>
+                    <td>EE-T<br>E-304</td>
+                    <td></td>
+                    <td>PYTHON-L<br>E-301</td>
+                    <td>CSPC-L<br>E-301</td>
+                    <td></td>
+                    <td>MA-L<br>E-301</td>
+                    <td>DSD-L<br>E-301</td>
+                    <td colspan="2">NCC/NSS/YOGA</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Thursday
+                    </td>
+                    <td colspan="2"></td>
+                    <td>CSPC-L<br>A-210</td>
+                    <td>DSD-L<br>A-210</td>
+                    <td>MA-L<br>A-210</td>
+                    <td></td>
+                    <td>EG-L<br>A-210</td>
+                    <td>PYTHON-L<br>A-210</td>
+                    <td colspan="2">SPORTS/CLUBS</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Friday
+                    </td>
+                    <td>EE-L<br>A-210</td>
+                    <td>MA-L<br>A-210</td>
+                    <td>DSD-L<br>A-210</td>
+                    <td>PYTHON-L<br>A-210</td>
+                    <td>FRENCH<br></td>
+                    <td></td>
+                    <td>CSPC-L<br>A-210</td>
+                    <td colspan="3"></td>
+  
+                  </tr>
+                  <tr>
+                    <td>
+                      Saturday
+                    </td>
+                    <td>CSPC-L<br>LHC-104</td>
+                    <td>PYTHON-L<br>LHC-104</td>
+                    <td>DSD-L<br>LHC-104</td>
+                    <td></td>
+                    <td>FRENCH</td>
+                    <td colspan="5"></td>
+                  </tr>
+                </tbody>
+                <caption style="font-size: 40px; font-family: 'Courier New', Courier, monospace; color: #61C0BF;">COMPUTER ENGINEERING B-07 TIME TABLE</caption>
+              </table>                 
+            
+        </div>
+    </div>
+    <script>
+        let logout = ()=> {
+            window.localStorage.clear();
+            let loc = window.location.href.slice(0, window.location.href.lastIndexOf('/'));
+            window.open(loc + "/login.html", "_self");
+        }   
+    </script>
+
+</body>
+</html>
